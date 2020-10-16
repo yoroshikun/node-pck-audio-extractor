@@ -87,6 +87,6 @@ node decode.js -b custom.bms
 
 ## Thanks to
 
-- [vgsstream](https://github.com/losnoco/vgmstream)
+- [vgmstream](https://github.com/losnoco/vgmstream)
 - [ffmpeg](https://ffmpeg.org/)
 - [quickbms](https://aluigi.altervista.org/quickbms.htm)
