@@ -7,7 +7,8 @@
   "dependencies": {
     "minimist": "^1.2.5",
     "mkdirp": "^1.0.4",
-    "node-worker-threads-pool": "^1.4.2"
+    "node-worker-threads-pool": "^1.4.2",
+    "rimraf": "^3.0.2"
   },
   "engines": {
     "node": ">=12.x"

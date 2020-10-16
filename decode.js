@@ -7,11 +7,12 @@
 
 const os = require('os');
 const fs = require('fs');
+const util = require('util');
+const rimraf = util.promisify(require('rimraf'));
 const path = require('path');
 const mkdirp = require('mkdirp');
 const args = require('minimist')(process.argv.slice(2));
 const { StaticPool } = require('node-worker-threads-pool');
-const { rmraf } = require('./helpers/rmraf');
 const { pck2wem } = require('./helpers/pck2wem');
 const { wem2wav } = require('./helpers/wem2wav');
 const { wav2flac } = require('./helpers/wav2flac');
@@ -153,7 +154,7 @@ const main = async () => {
     console.error(err.message);
     console.error(err.stack);
   } finally {
-    await rmraf(path.join(__dirname, 'processing'));
+    await rimraf(path.join(__dirname, 'processing'));
 
     process.exit();
   }
