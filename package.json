@@ -1,0 +1,15 @@
+{
+  "name": "node-pck-audio-extractor",
+  "version": "0.1.0",
+  "description": "Multi platform, Multi core, Multi format, Converter for .pck files into various workable files",
+  "main": "decode.js",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "mkdirp": "^1.0.4",
+    "node-worker-threads-pool": "^1.4.2"
+  },
+  "engines": {
+    "node": ">=12.x"
+  }
+}

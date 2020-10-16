@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Installing deps, this may take a little while..."
+mkdir libs
+git clone https://github.com/yoroshikun/node-pck-audio-extractor-deps-installer.git deps
+cd deps
+yarn install
+node setup.js
+cp -R libs/* ../libs/
+cd ..
+rm -rf deps
+chmod +x libs/quickbms/quickbms
+chmod +x libs/quickbms/quickbms_4gb_files
+echo "Completed installing deps, you may now run 'node decode.js' to start decoding audio!"
