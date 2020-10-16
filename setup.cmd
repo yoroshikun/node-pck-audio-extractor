@@ -1,12 +1,12 @@
 @echo off
 echo "Installing deps, this may take a little while..."
-mkdir %cd%/libs
-git clone https://github.com/yoroshikun/node-pck-audio-extractor-deps-installer.git deps
+if not exist %CD%\libs md %CD%\libs
+if not exist %CD%\deps call git clone https://github.com/yoroshikun/node-pck-audio-extractor-deps-installer.git deps
 cd deps
-yarn install
-node setup.js
-copy %cd%/libs/* %cd%/../libs
+call yarn install
+call node setup.js
+robocopy /s /e /xo %CD%\libs %CD%\..\libs /njh /njs /ndl /nc /ns
 cd ..
-rmdir /s /q %cd%/deps
+rmdir /s /q %CD%\deps
 echo "Completed installing deps, you may now run 'node decode.js' to start decoding audio!"
 pause

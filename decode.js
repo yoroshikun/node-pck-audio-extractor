@@ -43,7 +43,7 @@ const main = async () => {
     await Promise.all(
       pckFiles.map(async (pckFile) => {
         const processingDir = path.join(
-          '.',
+          __dirname,
           'processing',
           pckFile.split('.')[0],
         );
@@ -53,19 +53,19 @@ const main = async () => {
         await pck2wemPool.exec({ pckFile, processingDir });
 
         const subWavOutputDir = path.join(
-          '.',
+          __dirname,
           'output',
           'WAV',
           pckFile.split('.')[0],
         );
         const subFlacOutputDir = path.join(
-          '.',
+          __dirname,
           'output',
           'FLAC',
           pckFile.split('.')[0],
         );
         const subMp3OutputDir = path.join(
-          '.',
+          __dirname,
           'output',
           'MP3',
           pckFile.split('.')[0],
@@ -153,7 +153,7 @@ const main = async () => {
     console.error(err.message);
     console.error(err.stack);
   } finally {
-    await rmraf(path.join('.', 'processing'));
+    await rmraf(path.join(__dirname, 'processing'));
 
     process.exit();
   }
