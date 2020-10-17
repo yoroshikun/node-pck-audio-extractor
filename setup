@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "Installing deps, this may take a little while..."
+yarn install
 mkdir libs
 git clone https://github.com/yoroshikun/node-pck-audio-extractor-deps-installer.git deps
 cd deps

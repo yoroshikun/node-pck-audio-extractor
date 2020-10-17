@@ -11,16 +11,17 @@ Multi platform, Multi core, Multi format, Converter for .pck files into various 
 
 ## Requirements
 
-- Node 12+
+- [Node 12+](https://nodejs.org/en/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install)
 - ffmpeg [installed by deps installer]
 - quickbms & scripts [installed by deps installer]
-- vgstream [installed by deps installer]
-- git (for fetching the deps installer)
+- vgmstream [installed by deps installer]
+- [git](https://git-scm.com/downloads) (for fetching the deps installer)
 
 #### Deps installer requirements
 
-- Node 12+
-- (linux and macos require brew)
+- [Node 12+](https://nodejs.org/en/)
+- (Linux and MacOSX require [brew](https://brew.sh/))
 
 More info [here](https://github.com/yoroshikun/node-pck-audio-extractor-deps-installer)
 
@@ -36,13 +37,17 @@ Move the .pck files you want to extract into the `input` folder. The files _must
 
 2. Install dependencies
 
+- Windows run the `setup.cmd` (you can double click it or run though command line similar to MacOSX and Linux)
+- MacOSX or Linux run the script
+
 ```bash
 ./setup
-# Windows use setup.cmd
-yarn install
 ```
 
 3. Run the program
+
+- Windows run the `decode.cmd` (you can double click it or run though command line similar to MacOSX and Linux)
+- Any platform run with node from terminal
 
 ```bash
 node decode.js
