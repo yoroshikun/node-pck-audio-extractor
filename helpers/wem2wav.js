@@ -18,14 +18,15 @@ exports.wem2wav = wem2wav = async ({
     platform === 'win32'
       ? path.join(__dirname, 'libs', 'vgmstream', 'vgmstream_cli.exe')
       : 'vgmstream_cli';
-  const outputFile = path.join(outputDir, createdFile.split('.')[0] + '.wav');
+  const fileName = path.parse(createdFile).name;
+  const outputFile = path.join(outputDir, fileName + '.wav');
   const createdFilePath = path.join(processingDir, createdFile);
 
   await exec(vgmstream, ['-o', outputFile, createdFilePath]);
 
   console.info(
     `${createdFile.split('_')[0]}.pck -> ${createdFile} -> ${
-      createdFile.split('.')[0]
+      fileName
     }.wav`,
   );
 };

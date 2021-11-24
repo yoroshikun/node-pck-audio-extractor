@@ -14,8 +14,9 @@ exports.wav2flac = async ({ outputDir, inputDir, createdFile }) => {
     platform === 'win32'
       ? path.join(__dirname, 'libs', 'ffmpeg', 'bin', 'ffmpeg.exe')
       : 'ffmpeg';
-  const outputFile = path.join(outputDir, createdFile.split('.')[0] + '.flac');
-  const wavFilePath = path.join(inputDir, createdFile.split('.')[0] + '.wav');
+  const fileName = path.parse(createdFile).name;
+  const outputFile = path.join(outputDir, fileName + '.flac');
+  const wavFilePath = path.join(inputDir, fileName + '.wav');
 
   await exec(ffmpeg, [
     '-i',
@@ -28,7 +29,7 @@ exports.wav2flac = async ({ outputDir, inputDir, createdFile }) => {
 
   console.info(
     `${createdFile.split('_')[0]}.pck -> ${createdFile} -> ${
-      createdFile.split('.')[0]
-    }.wav -> ${createdFile.split('.')[0]}.flac`,
+      fileName
+    }.wav -> ${fileName}.flac`,
   );
 };

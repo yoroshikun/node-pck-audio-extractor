@@ -13,9 +13,10 @@ exports.wav2mp3 = async ({ outputDir, inputDir, createdFile }) => {
   const ffmpeg =
     platform === 'win32'
       ? path.join(__dirname, 'libs', 'ffmpeg', 'bin', 'ffmpeg.exe')
-      : 'ffmpeg';
-  const outputFile = path.join(outputDir, createdFile.split('.')[0] + '.mp3');
-  const wavFilePath = path.join(inputDir, createdFile.split('.')[0] + '.wav');
+      : 'ffmpeg';    
+  const fileName = path.parse(createdFile).name;
+  const outputFile = path.join(outputDir, fileName + '.mp3');
+  const wavFilePath = path.join(inputDir, fileName + '.wav');
 
   await exec(ffmpeg, [
     '-i',
@@ -30,7 +31,7 @@ exports.wav2mp3 = async ({ outputDir, inputDir, createdFile }) => {
 
   console.info(
     `${createdFile.split('_')[0]}.pck -> ${createdFile} -> ${
-      createdFile.split('.')[0]
-    }.wav -> ${createdFile.split('.')[0]}.mp3`,
+      fileName
+    }.wav -> ${fileName}.mp3`,
   );
 };

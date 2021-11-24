@@ -12,6 +12,7 @@ const rimraf = util.promisify(require('rimraf'));
 const path = require('path');
 const mkdirp = require('mkdirp');
 const args = require('minimist')(process.argv.slice(2));
+
 const { StaticPool } = require('node-worker-threads-pool');
 const { pck2wem } = require('./helpers/pck2wem');
 const { wem2wav } = require('./helpers/wem2wav');
@@ -43,10 +44,12 @@ const main = async () => {
 
     await Promise.all(
       pckFiles.map(async (pckFile) => {
+        const fileName = path.parse(pckFile).name;
+
         const processingDir = path.join(
           __dirname,
           'processing',
-          pckFile.split('.')[0],
+          fileName,
         );
 
         await mkdirp(processingDir);
@@ -57,19 +60,19 @@ const main = async () => {
           __dirname,
           'output',
           'WAV',
-          pckFile.split('.')[0],
+          fileName,
         );
         const subFlacOutputDir = path.join(
           __dirname,
           'output',
           'FLAC',
-          pckFile.split('.')[0],
+          fileName,
         );
         const subMp3OutputDir = path.join(
           __dirname,
           'output',
           'MP3',
-          pckFile.split('.')[0],
+          fileName,
         );
 
         await mkdirp(subWavOutputDir);
